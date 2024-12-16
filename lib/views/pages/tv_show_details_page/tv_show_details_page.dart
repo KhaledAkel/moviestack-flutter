@@ -11,7 +11,8 @@ class TvShowDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: Provider.of<MovieProvider>(context, listen: false)
-          .getMovieDetails(tvShowId),
+          .getMovieDetails(
+              tvShowId), // Ensure to fetch TV show details correctly
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
@@ -51,6 +52,16 @@ class TvShowDetailsPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                       "Number of Seasons: ${tvShow['number_of_seasons'] ?? 'N/A'}"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                      "Number of Episodes: ${tvShow['number_of_episodes'] ?? 'N/A'}"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                      "Genres: ${tvShow['genres']?.map((e) => e['name']).join(', ') ?? 'N/A'}"),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

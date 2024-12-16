@@ -10,13 +10,15 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final movieProvider = Provider.of<MovieProvider>(context);
 
+    // Access the theme toggle notifier to switch themes
+    final themeNotifier = ValueNotifier<bool>(false); // Update this notifier
+
     return Scaffold(
       appBar: AppTopBar(),
       body: DefaultTabController(
         length: 2,
         child: Column(
           children: [
-            // User Profile Information (Optional)
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -24,8 +26,8 @@ class ProfilePage extends StatelessWidget {
                   // Profile Picture and Username
                   CircleAvatar(
                     radius: 40,
-                    backgroundImage: AssetImage(
-                        'assets/images/profile_placeholder.png'), // Placeholder image
+                    backgroundImage: NetworkImage(
+                        'https://res.cloudinary.com/dhaq8ov6w/image/upload/v1733708572/elbupiqvooyuvttar5de.jpg'), // Placeholder image
                   ),
                   SizedBox(height: 10),
                   Text(
@@ -33,7 +35,19 @@ class ProfilePage extends StatelessWidget {
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 10),
-                  // You can add options to toggle theme, language, etc. here
+                  // Theme Switcher
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Dark Mode', style: TextStyle(fontSize: 18)),
+                      Switch(
+                        value: themeNotifier.value,
+                        onChanged: (value) {
+                          themeNotifier.value = value;
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

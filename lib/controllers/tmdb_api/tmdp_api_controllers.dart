@@ -67,7 +67,7 @@ class TMDBApi {
     try {
       final response =
           await _dio.get('/tv/$id', queryParameters: {'api_key': apiKey});
-      return response.data;
+      return response.data; // Returns TV Show details
     } catch (e) {
       throw Exception("Failed to fetch TV show details: $e");
     }

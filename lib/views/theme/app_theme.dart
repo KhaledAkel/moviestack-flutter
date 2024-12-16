@@ -5,4 +5,9 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.black,
   );
+
+  static final ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: Colors.black,
+    primaryColor: Colors.white,
+  );
 }

@@ -22,7 +22,7 @@ final GoRouter router = GoRouter(
           MovieDetailsPage(movieId: int.parse(state.pathParameters['id']!)),
     ),
     GoRoute(
-      path: '/tv-show/:id',
+      path: '/tv/:id', // Changed this to match the path used in SearchPage
       builder: (context, state) =>
           TvShowDetailsPage(tvShowId: int.parse(state.pathParameters['id']!)),
     ),
