@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:moviestack/providers/index.dart';
+import 'package:moviestack/views/index.dart' show AppTopBar, AppBottomBar;
 
 class SearchPage extends StatelessWidget {
+  final int selectedPage = 1;
+
   @override
   Widget build(BuildContext context) {
     final movieProvider = Provider.of<MovieProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Search'),
-      ),
+      appBar: AppTopBar(), // Custom top bar widget
       body: Column(
         children: [
           Padding(
@@ -22,7 +23,7 @@ class SearchPage extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
               onSubmitted: (query) {
-                movieProvider.search(query);
+                movieProvider.search(query); // Trigger search
               },
             ),
           ),
@@ -47,13 +48,17 @@ class SearchPage extends StatelessWidget {
                           final route = result['media_type'] == 'movie'
                               ? '/movie/${result['id']}'
                               : '/tv/${result['id']}';
-                          context.go(route);
+                          context.push(
+                              route); // Navigate to the movie or tv detail page
                         },
                       );
                     },
                   ),
           ),
         ],
+      ),
+      bottomNavigationBar: AppBottomBar(
+        selectedPage: selectedPage, // Navigation bar
       ),
     );
   }

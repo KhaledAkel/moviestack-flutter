@@ -52,6 +52,9 @@ class _AppBottomBarState extends State<AppBottomBar> {
             icon: Icon(Icons.person),
             onPressed: () {
               // Navigate to favorites page
+              if (widget.selectedPage != 2) {
+                context.go('/profile');
+              }
             },
             color: widget.selectedPage == 2
                 ? AppColors.primary
