@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moviestack/views/index.dart' show AppColors, Logo;
 
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   const AppTopBar({super.key});
@@ -6,7 +7,10 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('App Top Bar'),
+      title: Logo(
+        size: 20,
+      ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     );
   }
 
