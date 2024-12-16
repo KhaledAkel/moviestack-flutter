@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'MovieStack',
-      home: const SplashPage(),
+      routerConfig: router,
       theme: AppTheme.lightTheme,
     );
   }
