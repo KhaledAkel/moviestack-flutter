@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:moviestack/views/pages/index.dart' show SplashPage;
+import 'package:moviestack/views/pages/index.dart'
+    show SplashPage, PopularNowPage, SearchPage;
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -7,6 +8,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => SplashPage(),
+    ),
+    GoRoute(
+      path: '/popular-now',
+      builder: (context, state) => PopularNowPage(),
+    ),
+    GoRoute(
+      path: '/search',
+      builder: (context, state) => SearchPage(),
     ),
   ],
 );
